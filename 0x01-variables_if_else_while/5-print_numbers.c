@@ -1,21 +1,16 @@
-#include "holberton.h"
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
 
+/* betty style doc for function main goes there */
 /**
- * string_toupper - changes all lowercase letters to uppercase
- * @s: string to change
+ * main - Entry point
  *
- * Return: address of s
+ * Return: Always 0 (Success)
  */
-char *string_toupper(char *s)
+int main(void)
 {
-	int i = 0;
-
-	while (*(s + i))
-	{
-		if (*(s + i) >= 'a' && *(s + i) <= 'z')
-			*(s + i) -= 'a' - 'A';
-		i++;
-	}
-	return (s);
+	printf("0123456789\n");
+	return (0);
 }
 
