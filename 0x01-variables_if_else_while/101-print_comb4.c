@@ -1,53 +1,41 @@
-#include <stdlib.h>
-#include <time.h>
 #include <stdio.h>
-
-/* betty style doc for function main goes there */
 /**
- * main - Entry point
- *
- * Return: Always 0 (Success)
+ * main - print numbers from 00 to 99.
+(*
+ * Return: 0 on success
  */
 int main(void)
 {
-	int i, j, k, l;
+	int i = '0';
+	int j = '0';
+	int k = '0';
 
-	i = j = k = 48; l = 49;
-	while  ((i < 58))
+	while (i <= '7')
 	{
-		putchar(i); putchar(j); putchar(32); putchar(k); putchar(l);
-		if ((i == 57) && (j == 56) && (k == 57) && (l == 57))
+		while (j <= '8')
 		{
-			putchar('\n'); i++;
+			while (k <= '9')
+			{
+				if (i < j && j < k)
+				{
+					putchar(i);
+					putchar(j);
+					putchar(k);
+					if (!(i == '7' && j == '8' && k == '9'))
+					{
+						putchar(',');
+						putchar(' ');
+					}
+
+				}
+				k++;
+			}
+			k = '0';
+			j++;
 		}
-		else
-		{
-			putchar(44); putchar(32);
-			if ((k == 57) && (l == 57))
-			{
-				if (j < 56)
-				{
-					l = ++j + 1; k = i;
-				}
-				else if (j == 56)
-				{
-					j++; k = i + 1; l = 48;
-				}
-				else if (j == 57)
-				{
-					j = 48; l = 49; k = ++i;
-				}
-			}
-			else if (l < 57)
-			{
-				l++;
-			}
-			else
-			{
-				l = 48; k++;
-			}
-		}
+		j = '0';
+		i++;
 	}
+	putchar('\n');
 	return (0);
 }
-
