@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*
+/**
  * print_most_numbers -  a function that prints the numbers, from 0-9, \n line.
  * @void: input
  * Return: return numbers but 2 and 4
