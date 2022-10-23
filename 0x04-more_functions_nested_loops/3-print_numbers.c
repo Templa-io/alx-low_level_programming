@@ -7,7 +7,7 @@
  * Return: numbers but 2 and 4
  */
 
-void print_most_numbers(void)
+void print_numbers(void)
 {
 	int i;
 
