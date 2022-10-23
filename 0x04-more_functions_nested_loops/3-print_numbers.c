@@ -1,20 +1,24 @@
+
 #include "main.h"
 #include <stdio.h>
-
 /**
-  * print_numbers -  a function that prints the numbers, from 0-9, followed by a \n.
-  * @void:
-  * Return: 0
-  */
+ * print_numbers -  a function that prints the numbers, from 0-9, followed by a \n.
+ * @void:
+ * Return: numbers but 2 and 4
+ */
 
-void print_numbers(void)
+void print_most_numbers(void)
 {
- char ch = '0';
-  
-    while (ch <= '9')
-    {
-                putchar(ch);
-                ch++;
-    }
-            putchar('\n');
+	int i;
+
+	for(i = 0; i <='9'; i++)i
+	{
+		if((i == 2) || (i == 4))
+			continue;
+		else
+			_putchar(i + '0');
+	}
+	
+	putchar('\n')
 }
+
