@@ -1,17 +1,12 @@
-#include <stdio.h>
-#include "4-sum.h"
-#include "4-sum.h"
+#ifndef SUM_H
+#define SUM_H
 
-/**
- * main - check the code for ALX School students.
- *
- * Return: Always 0.
+/*
+ * File: 4-sum.h
+ * Desc: Header file that defines a function-like macro SUM(x, y)
+ *       that computes the sum of the numbers x and y.
  */
-int main(void)
-{
-    int s;
 
-    s = SUM(98, 1024);
-    printf("%d\n", s);
-    return (0);
-}
+#define SUM(x, y) ((x) + (y))
+
+#endif
