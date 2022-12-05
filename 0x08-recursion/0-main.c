@@ -1,5 +1,7 @@
+
 #include "main.h"
-#include <stdio.h>
+
+
 
 /**
  * main - check the code
@@ -8,6 +10,6 @@
  */
 int main(void)
 {
-    print_numbers();
+    _puts_recursion("Puts with recursion");
     return (0);
 }
