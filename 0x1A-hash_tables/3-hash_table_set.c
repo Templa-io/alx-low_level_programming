@@ -1,54 +1,55 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - function that adds an element to hash table
- * @ht: hash table to update
- * @key: key
- * @value: value of key
- * Return: updated table
+ * hash_table_set - Adds an element to the hash table
+ *
+ * @ht: The hash table you want to add or update the key/value to
+ * @key: The key to add. Cannot be an empty string
+ * @value: The value associated with the key. Must be a duplicate. Can be an
+ * empty string
+ *
+ * Return: 1 if success, 0 if failure
  */
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int idx = 0;
-	char *temp_val = NULL;
-	hash_node_t *temp = NULL;
-	hash_node_t *new = NULL;
+	hash_node_t *ptr;
+	hash_node_t *new_node;
+	unsigned long int idx;
 
-	if (ht == NULL || ht->array == NULL || value == NULL)
-		return (0);
-
-	if (strlen(key) == 0 || key == NULL)
-		return (0);
-	temp_val = strdup(value);
-	if (temp_val == NULL)
+	if (ht == NULL || key == NULL)
 		return (0);
 	idx = key_index((unsigned char *)key, ht->size);
-
-	/* Collision checker */
-	temp = ht->array[idx];
-	while (temp)
+	ptr = ht->array[idx];
+	while (ptr != NULL)
 	{
-		if (strcmp(temp->key, key) == 0)
+		if (strcmp(ptr->key, key) == 0)
 		{
-			free(temp->value);
-			temp->value = temp_val;
-			temp->value = strdup(value);
-			free(temp_val);
+			free(ptr->value);
+			ptr->value = strdup(value);
+			if (ptr->value == NULL)
+				return (0);
 			return (1);
 		}
-		temp = temp->next;	
+		ptr = ptr->next;
 	}
-
-	/* If no collision, insert node */
-	new = malloc(sizeof(hash_node_t));
-	if (new == NULL)
+	new_node = malloc(sizeof(hash_node_t));
+	if (new_node == NULL)
+		return (0);
+	new_node->key = strdup(key);
+	if (new_node->key == NULL)
 	{
-		free(new);
+		free(new_node);
 		return (0);
 	}
-	new->key = strdup(key);
-	new->value = temp_val;
-	new->next = ht->array[idx];
-	ht->array[idx] = new;
+	new_node->value = strdup(value);
+	if (new_node->value == NULL)
+	{
+		free(new_node->key);
+		free(new_node);
+		return (0);
+	}
+	new_node->next = ht->array[idx];
+	ht->array[idx] = new_node;
 	return (1);
 }
